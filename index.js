@@ -5,6 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes/routes");
 const reservationController = require("./controllers/reservationController");
+require("dotenv").config();
 
 const app = express();
 const port = 3008;
@@ -16,13 +17,10 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://lagoonjed:ZkT97DrPaHHbcWnY@cluster0.bn3mayj.mongodb.net/lagoon?retryWrites=true&w=majority&appName=Cluster0",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Use the routes
 app.use("/api", routes);
@@ -31,5 +29,5 @@ app.use("/api", routes);
 app.get("/", reservationController.renderIndex);
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });

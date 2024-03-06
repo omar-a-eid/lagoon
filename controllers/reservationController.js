@@ -1,6 +1,6 @@
 const ReservationModel = require("../models/reservationModel");
 
-router.post("/saveReservation", async (req, res) => {
+exports.saveReservation = async (req, res) => {
   const { user, date } = req.body;
 
   if (!user || !date) {
@@ -25,7 +25,7 @@ router.post("/saveReservation", async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-});
+};
 
 exports.getReservations = async (req, res) => {
   try {
