@@ -18,13 +18,10 @@ app.set("view engine", "pug");
 
 const mongoURI = process.env.MONGODB_URI;
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://lagoonjed:ZkT97DrPaHHbcWnY@cluster0.bn3mayj.mongodb.net/lagoon?retryWrites=true&w=majority&appName=Cluster0",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Use the routes
 app.use("/api", routes);
