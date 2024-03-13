@@ -9,6 +9,11 @@ const reservationSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  restID: {
+    type: String,
+    required: true,
+    enum: ["revira1", "revira2"],
+  },
 });
 
 const ReservationModel = mongoose.model("Reservation", reservationSchema);

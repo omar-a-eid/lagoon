@@ -29,6 +29,13 @@ html
         box-sizing: border-box;
       }
 
+      select, button {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+
       button {
         background-color: #007BFF;
         color: #fff;
@@ -65,5 +72,12 @@ html
       label(for="date") Date:
       input(type="date" id="date" name="date" required)
       br
+      label(for="restID") Restaurant ID:
+      select(id="restID" name="restID" required)
+        option(value="revira1") revira1
+        option(value="revira2") revira2
+      br
       button(type="submit") Save Reservation
 
+  if successMessage
+    p.success= successMessage
