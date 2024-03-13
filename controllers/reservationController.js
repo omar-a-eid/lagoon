@@ -35,13 +35,11 @@ exports.saveReservation = async (req, res) => {
 };
 
 exports.getReservations = async (req, res) => {
-  const { restID } = req.query;
-
+  const restID = req.params.id;
   try {
-    const query = restID ? { restID } : {};
-    const allReservations = await ReservationModel.find(query).sort({
-      date: 1,
-    });
+    const allReservations = await ReservationModel.find({
+      restID: restID,
+    }).sort({ date: 1 });
     res.json({ reservations: allReservations });
   } catch (error) {
     console.error(error);

@@ -5,6 +5,6 @@ const reservationController = require("../controllers/reservationController");
 // Save a reservation
 router.post("/saveReservation", reservationController.saveReservation);
 
-router.get("/getReservations", reservationController.getReservations);
+router.get("/getReservations/:id", reservationController.getReservations);
 
 module.exports = router;
